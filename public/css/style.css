@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+body {
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: "Open Sans";
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.Icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* Barre de navigation */
+nav {
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #000;
+  position: sticky;
+  top: 0;
+}
+
+nav h1 {
+  font-size: 20px;
+}
+
+nav .onglets {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+nav .onglets p {
+  font-size: 17px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+nav .onglets input {
+  margin: 8px 20px;
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  background-color: #f2f2f2;
+  outline: none;
+}
+
+/* Fin de la barre de navigation */
+
+/* Accueil */
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 50px;
+  max-width: 600px;
+  text-align: center;
+}
+
+header button {
+  padding: 15px 20px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Fin de Accueil */
+
+/* Introduction */
+
+/* Fin de Introduction */
+
+/* Section principale */
+
+.main {
+  margin: 20px;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Fin de la section principale */
+
+/* Pied de page */
+footer {
+  background-color: #000;
+  padding: 30px;
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+footer .social-media {
+  display: flex;
+}
+
+footer .social-media p {
+  margin-right: 15px;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  padding: 8px;
+  text-align: center;
+  width: 40px;
+  cursor: pointer;
+}
+
+/* Fin du pied de page */
+
+@media screen and (max-width: 640px) {
+  nav .onglets .link,
+  nav h1 {
+    display: none;
+  }
+
+  .cards .card img {
+    width: 300px;
+  }
+}

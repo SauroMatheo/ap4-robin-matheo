@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("style.css");
+
+nav {
+  z-index: 1;
+}
+
+.articles {
+  display: flex;
+  width: 90%;
+  margin: 20px auto;
+}
+
+.contours {
+  border: thick solid #32a1ce;
+  /* background-color: lightblue; */
+  background-color: whitesmoke;
+  padding: 3em;
+  margin: 2.5%;
+  width: 95%;
+  font-weight: bold;
+  border-radius: 1em;
+}
+
+.flex-box {
+  display: flex;
+  width: 1000px;
+  margin: 20px auto;
+}
+
+.left {
+  width: 40%;
+  padding: 10% right;
+}
+
+.right {
+  width: auto;
+}
+
+.big-img {
+  width: 250px;
+  max-width: 205px;
+  max-height: 207px;
+  border: thick double #32a1ce;
+  border-radius: 3px;
+}
+
+.big-img img {
+  width: 200px;
+  height: 200px;
+}
+
+.images {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin-top: 25%;
+}
+
+.small-img {
+  width: 4em;
+  height: 4em;
+  overflow: hidden;
+  border: 1.5px solid black;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.small-img:hover {
+  transform: scale(1.2);
+}
+
+.small-img img {
+  width: inherit;
+  height: 4em;
+  width: 4em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.small-img:hover img {
+  transform: scale(1.2);
+}
+
+.box {
+  content: "";
+  display: table;
+  clear: both;
+  float: left;
+  height: 470px;
+  width: 23%;
+  padding: 0 10px;
+}
+
+.pname {
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 50px;
+}
+
+.ref {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.ratings i {
+  color: rgb(255, 136, 0);
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 20px 0;
+}
+
+.quantity {
+  display: flex;
+}
+
+.quantity p {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.quantity input {
+  width: 40px;
+  font-size: 17px;
+  font-weight: 500;
+  text-align: center;
+  margin-left: 15px;
+}
+
+.btn-box {
+  display: flex;
+  margin-top: 40px;
+}
+
+.btn-box button {
+  font-size: 18px;
+  padding: 8px 25px;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+}
+
+.buy-btn {
+  background-color: #00aeff;
+}
+
+.buy-btn:hover {
+  background-color: #0066ff;
+}

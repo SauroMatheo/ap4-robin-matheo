@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All4Sport
+{% endblock %}
+
+{% block body %}
+	<div class="all4sport">
+		<link href="{{ asset('css/panier.css') }}" rel="stylesheet"/>
+
+		<div class="premain">
+			<h1>All4Sport - Panier</h1>
+		</div>
+
+		<!-- Section principale -->
+		<section
+			class="main">
+			<!-- Tout les Articles -->
+
+			<h4>Total du panier:
+				{{ total | round(2) }}€</h4>
+			<br>
+
+			{% if articles is empty %}
+				<h2>Votre panier est vide.</h2>
+			{% endif %}
+
+			<div class="Articles">
+
+
+				{% for article in articles %}
+					<div
+						class="card">
+						{# S'il n'y a pas d'images, met une image cassée pour montrer le problème #}
+						<a href="{{ path('app_articles', {id: article.id}) }}">
+							{% if article.lesImages is empty %}
+								<img src="{{ asset( 'image/image_cassee.png' ) }}">
+							{% else %}
+								<img src="{{ asset( 'image/articles/' ~ article.lesImages[0].lienImage ) }}">
+							{% endif %}
+						</a>
+						<div class="card-header">
+							<h4 class="title">{{ quantites[loop.index0] }}x
+								{{ article.nom }}</h4>
+							<h4 class="price">{{ (article.prixUniHt * 1.2) | round(2) }}€ =>
+								{{ (article.prixUniHt * 1.2 * quantites[loop.index0]) | round(2) }}€</h4>
+						</div>
+					</div>
+				{% endfor %}
+
+			</div>
+			<!-- Fin de tout les Articles -->
+
+		</section>
+		<!-- Fin de la section principale -->
+	</div>
+{% endblock %}
