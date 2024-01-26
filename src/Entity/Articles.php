@@ -8,6 +8,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Serializer\Annotation\Groups;
+
 /*
 Classe Articles:
 Un exemplaire d'article vendu dans le magasin.
@@ -28,34 +30,44 @@ class Articles
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["articleList"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["articleList"])]
     private ?string $nom = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(["articleList"])]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
+    #[Groups(["articleList"])]
     private ?string $prixuniht = null;
 
     #[ORM\OneToMany(mappedBy: 'fk_articles', targetEntity: Stockage::class, orphanRemoval: true)]
+    #[Groups(["articleList"])]
     private Collection $stockages;
 
     #[ORM\OneToMany(mappedBy: 'fk_articles', targetEntity: ArticleCommande::class)]
+    #[Groups(["articleList"])]
     private Collection $articleCommandes;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
+    #[Groups(["articleList"])]
     private ?Rayons $fk_rayons = null;
 
     #[ORM\ManyToMany(targetEntity: Sport::class, mappedBy: 'lesarticles')]
+    #[Groups(["articleList"])]
     private Collection $lessports;
 
     #[ORM\ManyToOne(inversedBy: 'lesArticles')]
+    #[Groups(["articleList"])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Fournisseur $leFournisseur = null;
 
     #[ORM\OneToMany(mappedBy: 'lArticle', targetEntity: ImageArticle::class)]
+    #[Groups(["articleList"])]
     private Collection $lesImages;
 
     public function __construct()
