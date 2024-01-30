@@ -8,6 +8,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Serializer\Annotation\Groups;
+
 /*
 Classe Sport:
 Un sport, sservant à catégoriser des articles.
@@ -23,9 +25,11 @@ class Sport
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["articleList"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["articleList"])]
     private ?string $nom = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]

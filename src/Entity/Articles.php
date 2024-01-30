@@ -45,12 +45,10 @@ class Articles
     #[Groups(["articleList"])]
     private ?string $prixuniht = null;
 
-    #[ORM\OneToMany(mappedBy: 'fk_articles', targetEntity: Stockage::class, orphanRemoval: true)]
-    #[Groups(["articleList"])]
+    #[ORM\OneToMany(mappedBy: 'fk_articles', targetEntity: Stockage::class, orphanRemoval: true)]   
     private Collection $stockages;
 
     #[ORM\OneToMany(mappedBy: 'fk_articles', targetEntity: ArticleCommande::class)]
-    #[Groups(["articleList"])]
     private Collection $articleCommandes;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]

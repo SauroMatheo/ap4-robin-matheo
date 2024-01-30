@@ -9,7 +9,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 use App\Entity\Articles;
 use App\Repository\ArticlesRepository;
-use App\Repository\ImageArticleRepository;
 use App\Repository\StockageRepository;
 use App\Repository\RayonsRepository;
 
@@ -28,14 +27,18 @@ class ApiController extends AbstractController
     #[Route('/api/articles', name: 'app_api', methods: ['GET'])]
     public function api_articles(ArticlesRepository $articleRepository, SerializerInterface $serializer): JsonResponse
     {
-        $limit = null;
-
-        if (isset($_GET["limit"])) { $limit = $_GET["limit"]; }
-
-        if ($limit == null) {
-            $articles = $articleRepository->findAll();
+        if (isset($_GET["id"])) {
+            $articles = $articleRepository->find($_GET["id"]);
         } else {
-            $articles = $articleRepository->findLimit($limit); 
+            $limit = null;
+
+            if (isset($_GET["limit"])) { $limit = $_GET["limit"]; }
+    
+            if ($limit == null) {
+                $articles = $articleRepository->findAll();
+            } else {
+                $articles = $articleRepository->findLimit($limit); 
+            }
         }
 
         $articlesList = $serializer->serialize($articles, 'json', ['groups' => 'articleList']);

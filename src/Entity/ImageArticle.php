@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\ImageArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Serializer\Annotation\Groups;
+
 /*
 Classe ImageArticle:
 Simplement une classe définissant une image pour un article.
@@ -18,9 +20,11 @@ class ImageArticle
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["articleList"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["articleList"])]
     private ?string $lienImage = null;
 
     #[ORM\ManyToOne(inversedBy: 'lesImages')]

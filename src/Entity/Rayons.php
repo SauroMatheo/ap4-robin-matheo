@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Serializer\Annotation\Groups;
+
 /*
 Classe Rayons:
 */
@@ -16,9 +18,11 @@ class Rayons
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["articleList"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["articleList"])]
     private ?string $nom = null;
 
     #[ORM\OneToMany(mappedBy: 'fk_rayons', targetEntity: Articles::class)]
