@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UtilisateursRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -29,6 +30,7 @@ Collection lesEnfants:                  Tous les enfants sous la responsabilité
 ?string password:                       Le mot de passe Hashé de l'utilisateur
 */
 #[ORM\Entity(repositoryClass: UtilisateursRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'Il y a déjà un compte avec cet email.')]
 class Utilisateurs implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
