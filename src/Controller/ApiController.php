@@ -29,28 +29,27 @@ class ApiController extends AbstractController
     {
         /*
         Possibles $_GET :
-        id:         Identifiant
+        id:         Identifiant (ignore le reste)
+        nom:        Nom à rechercher
+        rayon:      Rayon à rechercher
         limit:      Limite de résultats (25 max)
         offset:     A partir de quel résultat on commence
         */
         if (isset($_GET["id"])) {
             $articles = $articleRepository->find($_GET["id"]);
         } else {
+            $nom = null;
+            $rayon = null;
             $limit = null;
             $offset = null;
 
+            
+            if (isset($_GET['nom'])) { $nom = $_GET['nom']; } // Récup du nom de l'article recherché
+            if (isset($_GET['rayon'])) { $rayon = $_GET['rayon']; } // Récup du rayon recherché
             if (isset($_GET["limit"])) { $limit = $_GET["limit"]; }
             if (isset($_GET["offset"])) { $offset = $_GET["offset"]; }
     
-            if ($limit == null) {
-                $articles = $articleRepository->findLimit(25, 0);
-            } else {
-                if ($offset == null) {
-                    $articles = $articleRepository->findLimit($limit, 0); 
-                } else {
-                    $articles = $articleRepository->findLimit($limit, $offset); 
-                }
-            }
+            $articles = $articleRepository->findSearch($nom, $rayon, $limit, $offset);
         }
 
         $articlesList = $serializer->serialize($articles, 'json', ['groups' => 'articleList']);

@@ -22,10 +22,12 @@ class ArticlesController extends AbstractController
     public function tousArticles(ArticlesRepository $articleRepository, RayonsRepository $rayonsRepository): Response
     {
         $page = 0;
-        $max_articles = 3; // Modifier ici le nombre d'articles par page
+        $max_articles = 4; // Modifier ici le nombre d'articles par page
         
         $nom = null;
         $rayon = null;
+        $limit = null;
+        $offset = null;
 
         $rayons = $rayonsRepository->findAll(); // Permet de sélectionner tous les rayons dans la recherche
 
@@ -39,7 +41,7 @@ class ArticlesController extends AbstractController
             $articles = $articleRepository->findAll();
         } else {
             // Recherche d'article par nom/rayon
-            $articles = $articleRepository->findSearch($nom, $rayon); 
+            $articles = $articleRepository->findSearch($nom, $rayon, $max_articles, $page*$max_articles); 
         }
         
         return $this->render('articles/tous_articles.html.twig', [

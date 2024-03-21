@@ -52,12 +52,12 @@
 			<div class="boutonWrapper">
 				{% if page != 0 %}
 					<a href="{{ path('app_tous_articles', {page: page - 1}) }}" class="bouton">◀ Page
-						{{ page - 1 }}</a>
+						{{ page }}</a>
 				{% endif %}
 
 				{% if not estderniere %}
 					<a href="{{ path('app_tous_articles', {page: page + 1, nom: nom, rayon: rayon}) }}" class="bouton">Page
-						{{ page + 1 }}
+						{{ page + 2 }}
 						▶</a>
 				{% endif %}
 			</div>

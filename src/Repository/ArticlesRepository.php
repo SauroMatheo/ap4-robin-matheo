@@ -42,13 +42,22 @@ class ArticlesRepository extends ServiceEntityRepository
     /**
      * Permet de rechercher des articles en fonction de leur nom et rayon.
      * Lorsqu'un paramètre est vide, il n'est pas pris en compte, pour faciliter l'utilisation.
-     * @param ?string $nom
-     * @param ?Rayons $rayon
+     * @param ?string   $nom
+     * @param ?Rayons   $rayon
+     * @param ?int      $limit
+     * @param ?int      $offset
     * @return Articles[] Returns an array of Articles objects
     */
-    public function findSearch($nom, $rayon): array
+    public function findSearch($nom, $rayon, $limit, $offset): array
     {
         $query = $this->createQueryBuilder('a');
+
+        if (empty($limit)) {
+            $limit = 25;
+        }
+        if (empty($offset)) {
+            $offset = 0;
+        }
 
         if (!empty($nom)) {
             $query = $query
@@ -61,6 +70,8 @@ class ArticlesRepository extends ServiceEntityRepository
             ->andWhere('a.fk_rayons = :rayon')
             ->setParameter('rayon', $rayon);
         }
+
+        $query = $query->setMaxResults(max(1,min($limit, 25)))->setFirstResult(max(0, $offset));
 
         return $query->getQuery()->getResult();
     }
