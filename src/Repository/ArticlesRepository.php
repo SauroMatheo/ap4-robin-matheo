@@ -26,10 +26,14 @@ class ArticlesRepository extends ServiceEntityRepository
     * @param int $limit
     * @return Articles[] Returns an array of Articles objects
     */
-   public function findLimit($limit): array
+   public function findLimit($limit, $offset): array
    {
+        if (empty($offset)) {
+            $offset = 0;
+        }
        return $this->createQueryBuilder('a')
-           ->setMaxResults($limit)
+           ->setMaxResults(max(1,min($limit, 25)))
+           ->setFirstResult(max(0, $offset))
            ->getQuery()
            ->getResult()
        ;
