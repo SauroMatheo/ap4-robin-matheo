@@ -1,10 +1,17 @@
-{% extends 'base.html.twig' %}
+{# {% extends 'base.html.twig' %} #}
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Inscription
+			{% endblock %}
+		</title>
+	</head>
+</html>
 
-{% block title %}Register
-{% endblock %}
-
-{% block body %}
-	<h1>Register</h1>
+<body>
+	{% block body %}
+	<h1>Inscription</h1>
 
 	{{ form_errors(registrationForm) }}
 
@@ -23,6 +30,8 @@
             label: "Accepter les termes et conditions"
         }) }}
 
-	<button type="submit" class="btn">Register</button>
+	<button type="submit" class="btn">Inscription</button>
 	{{ form_end(registrationForm) }}
-{% endblock %}
+	Vous avez déjà un compte ?
+	<a href="{{ path('app_login') }}">Se connecter</a</body> {% endblock %}
+</body></html>
