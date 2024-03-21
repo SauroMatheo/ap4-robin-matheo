@@ -15,7 +15,7 @@ class AccueilController extends AbstractController
     * 
     * Renvoie une liste d'articles
     */
-    #[Route('/accueil', name: 'app_accueil')]
+    #[Route('/', name: 'app_accueil')]
     public function index(ArticlesRepository $articleRepository): Response
     {
         // Actuellement, récupère les 3 premiers, sans critère.
