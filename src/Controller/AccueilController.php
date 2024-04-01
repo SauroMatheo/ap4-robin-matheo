@@ -19,7 +19,7 @@ class AccueilController extends AbstractController
     public function index(ArticlesRepository $articleRepository): Response
     {
         // Actuellement, récupère les 3 premiers, sans critère.
-        $articles = $articleRepository->findLimit(3);
+        $articles = $articleRepository->findLimit(3, 0);
 
         return $this->render('accueil/index.html.twig', [
             'articles' => $articles
